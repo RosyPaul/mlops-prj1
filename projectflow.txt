@@ -16,3 +16,7 @@ mlflow tracking code in dasghub's experiment:
     mlflow.log_metric('metric name', 1)
 
 write experiment 1-> baseline experiment
+
+write experiment 2
+
+commit and push
