@@ -16,7 +16,15 @@ mlflow tracking code in dasghub's experiment:
     mlflow.log_metric('metric name', 1)
 
 write experiment 1-> baseline experiment
-
-write experiment 2
-
 commit and push
+write experiment 2
+commit and push
+write experiment 3
+commit and push
+
+dvc init
+add  dvc remote(local): dvc add remote -d add remote (local)
+create a dvc pipeline
+    dataingestion->data preprocessing->feature engg->model building->model evaluation
+create dvc.yaml+params.yaml
+run dvc repro
