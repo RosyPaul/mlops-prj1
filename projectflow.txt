@@ -4,3 +4,15 @@ create virtual env(skipping)
 initialize github
 create github repo
 push code to github
+setup ml flow in dasghub
+dasghub uri from experiment: https://dagshub.com/RosyPaul/mlops-prj1.mlflow
+mlflow tracking code in dasghub's experiment:
+    import dagshub
+    dagshub.init(repo_owner='RosyPaul', repo_name='mlops-prj1', mlflow=True)
+
+    import mlflow
+    with mlflow.start_run():
+    mlflow.log_param('parameter name', 'value')
+    mlflow.log_metric('metric name', 1)
+
+write experiment 1-> baseline experiment
