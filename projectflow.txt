@@ -1,0 +1,6 @@
+cookiecutter -c v1 http://github.com/drivendata/cookiecutter-data-science
+delete file->src/models to model
+create virtual env(skipping)
+initialize github
+create github repo
+push code to github
