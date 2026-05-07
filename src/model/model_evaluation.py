@@ -137,7 +137,7 @@ def main():
             # Log model to MLflow
             # Log model to MLflow
             try:
-                mlflow.sklearn.log_model( sk_model=clf,artifact_path="model",registered_model_name="final_model" ) # ✅ registers automatically)
+                mlflow.sklearn.log_model( sk_model=clf,artifact_path="model",registered_model_name="new_model" ) # ✅ registers automatically)
                 logger.info("✅ log_model succeeded")
             except Exception as e:
                 logger.error(f"❌ log_model FAILED: {type(e).__name__}: {e}")

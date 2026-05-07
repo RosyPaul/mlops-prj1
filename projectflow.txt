@@ -25,7 +25,7 @@ commit and push
 dvc init
 add  dvc remote(local): dvc add remote -d add remote (local)
 create a dvc pipeline
-    dataingestion->data preprocessing->feature engg->model building->model evaluation
+    dataingestion->data preprocessing->feature engg->model building->model evaluation+model registry
 create dvc.yaml+params.yaml
 run dvc repro
 
@@ -37,6 +37,8 @@ add new cloud storage:
     pip install dvc[s3] awscli
     aws configure
     dvc remote add -d myremote s3://rosydvcbucket
+
+
 
 
 
