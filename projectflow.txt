@@ -28,3 +28,24 @@ create a dvc pipeline
     dataingestion->data preprocessing->feature engg->model building->model evaluation
 create dvc.yaml+params.yaml
 run dvc repro
+
+to check all the remote storage: dvc remote list
+remote storage(local): dvc remote remove myremote
+add new cloud storage:
+    create s3 bucket
+    create IAM user
+    pip install dvc[s3] awscli
+    aws configure
+    dvc remote add -d myremote s3://rosydvcbucket
+
+
+
+
+
+
+
+
+onelittlecoder
+probal_ai
+algorethmic_simplicity
+

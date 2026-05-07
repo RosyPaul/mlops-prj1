@@ -7,6 +7,17 @@ import logging
 import mlflow
 import mlflow.sklearn
 import dagshub
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
+
+dagshub_token = os.getenv("DAGSHUB_PAT")
+if not dagshub_token:
+    raise EnvironmentError("DAGSHUB_PAT environment variable is not set")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = "RosyPaul"
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
 
 mlflow.set_tracking_uri('https://dagshub.com/RosyPaul/mlops-prj1.mlflow')
 dagshub.init(repo_owner='RosyPaul', repo_name='mlops-prj1', mlflow=True)
@@ -124,11 +135,18 @@ def main():
                     mlflow.log_param(param_name, param_value)
             
             # Log model to MLflow
-            mlflow.sklearn.log_model(clf, "model")
+            # Log model to MLflow
+            try:
+                mlflow.sklearn.log_model( sk_model=clf,artifact_path="model",registered_model_name="final_model" ) # ✅ registers automatically)
+                logger.info("✅ log_model succeeded")
+            except Exception as e:
+                logger.error(f"❌ log_model FAILED: {type(e).__name__}: {e}")
+                raise  # ✅ don't save model_info if model wasn't logged
+            # mlflow.sklearn.log_model(clf, "model")
             
             # Save model info
-            save_model_info(run.info.run_id, "model", 'reports/experiment_info.json')
-            
+            save_model_info(run.info.run_id, "model", 'reports/model_info.json')
+            logger.info(f"✅ Model logged under run ID: {run.info.run_id}")
             # Log the metrics file to MLflow
             mlflow.log_artifact('reports/metrics.json')
 
